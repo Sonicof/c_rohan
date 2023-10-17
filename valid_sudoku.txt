@@ -61,4 +61,9 @@ void main()
     int a=atoi(arr[0][0]);
     int b=atoi(arr[0][1]);
     printf("%d",a+b);
+
+if(strcmp(arr[0][0],"5")==0)
+    {
+        printf("True");
+    }
 }
