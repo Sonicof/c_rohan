@@ -2,7 +2,7 @@
 #include <stdlib.h> 
 #include <string.h>
 #include <stdbool.h> 
-int binarySearch(int arr[10],int a,int n)
+int Search(int arr[10],int a,int n)
 {
 	for(int i=0;i<n;i++)
 	{
@@ -21,7 +21,7 @@ bool sudoku(int arr[9][9])
         int k=0;
         for(int j=0;j<9;j++)
         {
-            if(binarySearch(unique,arr[i][j],k))
+            if(Search(unique,arr[i][j],k))
             {
                 return false;
             }
@@ -38,7 +38,7 @@ bool sudoku(int arr[9][9])
         int k=0;
         for(int j=0;j<9;j++)
         {
-            if(binarySearch(unique,arr[j][i],k))
+            if(Search(unique,arr[j][i],k))
             {
                 return false;
             }
@@ -59,7 +59,7 @@ bool sudoku(int arr[9][9])
             {
                 for(int j1=j-3;j1<j;j1++)
                 {
-                    if(binarySearch(unique,arr[i1][j1],k))
+                    if(Search(unique,arr[i1][j1],k))
                     {
                         return false;
                     }
