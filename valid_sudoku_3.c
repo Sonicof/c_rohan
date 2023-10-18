@@ -1,6 +1,18 @@
 #include <stdio.h> 
 #include <stdlib.h> 
-#include <string.h> 
+#include <string.h>
+#include <stdbool.h> 
+int binarySearch(int arr[10],int a,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+	    if(arr[i]==a)
+	    {
+	        return true;
+	    }
+	}
+	return false;
+}
 bool sudoku(int arr[9][9]) 
 { 
     for(int i=0;i<9;i++)
@@ -61,17 +73,6 @@ bool sudoku(int arr[9][9])
         }
     }
     return true;
-}
-int binarySearch(int arr[10],int a,int n)
-{
-	for(int i=0;i<n;i++)
-	{
-	    if(arr[i]==a)
-	    {
-	        return true;
-	    }
-	}
-	return false;
 }
 void main()
 {
