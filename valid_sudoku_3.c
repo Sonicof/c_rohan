@@ -2,7 +2,7 @@
 #include <stdlib.h> 
 #include <string.h>
 #include <stdbool.h> 
-int Search(int arr[10],int a,int n)
+bool Search(int arr[10],int a,int n)
 {
 	for(int i=0;i<n;i++)
 	{
