@@ -107,3 +107,48 @@ void main()
     printf("%s",ptr);
 }
 
+
+
+
+
+#include <stdio.h> 
+ #include <stdlib.h> 
+ #include <string.h> 
+ void main() 
+ { 
+    char arr[9][9][5]= 
+                       { 
+                       {".","3","4","6","7","8","9","1","2"}, 
+                       {"6","7","2","1","9","5","3","4","8"}, 
+                       {"1","9","8","3","4","2","5","6","7"}, 
+                       {"8","5","9","7","6","1","4","2","3"}, 
+                       {"4","2","6","8","5","3","7","9","1"}, 
+                       {"7","1","3","9","2","4","8","5","6"}, 
+                       {"9","6","1","5","3","7","2","8","4"}, 
+                       {"2","8","7","4","1","9","6","3","5"}, 
+                       {"3","4","5","2","8","6","1","7","9"} 
+                       }; 
+     char str1[10],str2[10];                  
+     for(int i=0;i<9;i++)
+     {
+         for(int j=0;j<9;j++)
+         {
+                 char *ptr=arr[i][j]; 
+                 char firstchar=*ptr; 
+                 ptr=strchr(str1,firstchar);
+                 if(ptr != NULL)
+                 {
+                     goto the_end;
+                 }
+                 *ptr=arr[j][i]; 
+                 firstchar=*ptr; 
+                 ptr=strchr(str2,firstchar);
+                 if(ptr != NULL)
+                 {
+                     goto the_end;
+                 }
+                 strcat(str1,arr[i][j]);
+                 strcat(str2,arr[j][i]);
+         }
+     }
+     
