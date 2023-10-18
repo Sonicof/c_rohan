@@ -3,6 +3,7 @@
 #include <string.h> 
 void main() 
 { 
+    int n;
     char arr[9][9][5]= 
                        { 
                        {"5","3","4","6","7","8","9","1","2"}, 
@@ -26,8 +27,8 @@ void main()
             ptr=strchr(str1,firstchar);
             if(ptr != NULL)
             {
+                n=1;
                 goto the_end;
-                printf("1\n");
             }
             strcat(str1,arr[i][j]);
         }
@@ -43,8 +44,8 @@ void main()
             ptr=strchr(str2,firstchar);
             if(ptr != NULL)
             {
+                n=1;
                 goto the_end;
-                printf("2\n");
             }
             strcat(str2,arr[j][i]);
         }
@@ -64,8 +65,8 @@ void main()
                     ptr=strchr(str1,firstchar);
                     if(ptr != NULL)
                     {
+                        n=1;
                         goto the_end;
-                        printf("3\n");
                     }
                     strcat(str1,arr[i1][j1]);
                 }
@@ -75,5 +76,8 @@ void main()
     printf("Grids Verified\n");
     printf("Accepted\n");
     the_end:
-        printf("Rejected\n");
+        if(n==1)
+        {
+            printf("Rejected");
+        }
 }        
