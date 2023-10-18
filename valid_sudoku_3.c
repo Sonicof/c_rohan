@@ -4,6 +4,10 @@
 #include <stdbool.h> 
 bool Search(int arr[10],int a,int n)
 {
+	if(a==0)
+	{
+		return false;
+	}
 	for(int i=0;i<n;i++)
 	{
 	    if(arr[i]==a)
@@ -76,7 +80,7 @@ bool sudoku(int arr[9][9])
 }
 void main()
 {
-    int s[9][9]={{5,3,4,6,7,8,9,1,2},
+    int s[9][9]={{5,0,0,6,7,8,9,1,2},
                   {6,7,2,1,9,5,3,4,8},
                   {1,9,8,3,4,2,5,6,7},
                   {8,5,9,7,6,1,4,2,3},
