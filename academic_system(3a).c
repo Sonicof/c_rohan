@@ -4,7 +4,6 @@ struct system
 		char std_id[10];
 		char name[50];
 		char grade;
-		char subject[5][10];
 		int marks[5];
 	};
 
@@ -27,16 +26,14 @@ void main()
 	{
 		printf("Enter Details of Student %d --->",(i+1));
 		printf("\n\tEnter Student ID : ");
-		scanf("%s",(ptr+i)->std_id);
+		scanf("%s",sys[i].std_id);
 		printf("\n\tEnter Name : ");
-		scanf("%s",(ptr+i)->name);
+		scanf("%s",sys[i].name);
 		printf("\n\tEnter Marks for 5 subjects scored out of 100 --->");
 		for(int j=0;j<5;j++)
 		{
-			printf("\n\t\tEnter subject name : ");
-			scanf("%s",(ptr+i)->subject[j]);
 			printf("\n\t\tEnter marks in this subject : ");
-			scanf("%d",(ptr+i)->marks[j]);
+			scanf("%d",&sys[i].marks[j]);
 		}
 	}
 	for(int i=0;i<5;i++)
@@ -44,28 +41,28 @@ void main()
 		int total=0;
 		for(int j=0;j<5;j++)
 		{
-			total=total+(ptr+i)->marks[j];
+			total=total+sys[i].marks[j];
 		}
 		float avg=total/5;
 		if(avg>=90)
 		{
-			(ptr+i)->grade='A';
+			sys[i].grade='A';
 		}
 		if(avg>=80 && avg<90)
 		{
-			(ptr+i)->grade='B';
+			sys[i].grade='B';
 		}
 		if(avg>=70 && avg<80)
 		{
-			(ptr+i)->grade='C';
+			sys[i].grade='C';
 		}
 		if(avg>=60 && avg<70)
 		{
-			(ptr+i)->grade='D';
+			sys[i].grade='D';
 		}
 		if(avg<60)
 		{
-			(ptr+i)->grade='F';
+			sys[i].grade='F';
 		}
 	}
 	display(sys);	
