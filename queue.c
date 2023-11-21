@@ -8,7 +8,7 @@ int rear = -1;
 int queue[MAX_SIZE];
 
 int isEmpty() {
-    return (front == -1);
+    return (front == -1 && rear == -1);
 }
 
 int isFull() {
@@ -71,7 +71,9 @@ int main() {
     enqueue(20);
     enqueue(30);
     enqueue(40);
-
+    enqueue(50);
+    enqueue(60);
+    
     display();
 
     dequeue();
