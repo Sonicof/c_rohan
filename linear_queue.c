@@ -15,9 +15,33 @@ int isFull() {
     return (rear == MAX_SIZE - 1);
 }
 
+void peek()
+{
+    if(isEmpty())
+    {
+        printf("\nQueue is empty!!");
+    }
+    else
+    {
+        printf("\nThe first element is : %d",queue[front]);
+    }
+}
+
+void back()
+{
+    if(isEmpty())
+    {
+        printf("\nQueue is empty!!");
+    }
+    else
+    {
+        printf("\nThe last element is : %d",queue[rear]);
+    }
+}
+
 void enqueue(int value) {
     if (isFull()) {
-        printf("Queue is full. Cannot enqueue %d\n", value);
+        printf("\nQueue is full. Cannot enqueue %d", value);
         return;
     }
 
@@ -28,14 +52,14 @@ void enqueue(int value) {
     rear++;
     queue[rear] = value;
 
-    printf("Enqueued: %d\n", value);
+    printf("\nEnqueued: %d", value);
 }
 
 int dequeue() {
     int dequeuedValue;
 
     if (isEmpty()) {
-        printf("Queue is empty. Cannot dequeue\n");
+        printf("\nQueue is empty. Cannot dequeue");
         return -1;
     }
 
@@ -48,17 +72,17 @@ int dequeue() {
         front++;
     }
 
-    printf("Dequeued: %d\n", dequeuedValue);
+    printf("\nDequeued: %d", dequeuedValue);
     return dequeuedValue;
 }
 
 void display() {
     if (isEmpty()) {
-        printf("Queue is empty.\n");
+        printf("\nQueue is empty.");
         return;
     }
 
-    printf("Queue elements: ");
+    printf("\nQueue elements: ");
     for (int i = front; i <= rear; i++) {
         printf("%d ", queue[i]);
     }
@@ -73,6 +97,9 @@ int main() {
     enqueue(40);
     enqueue(50);
     enqueue(60);
+    
+    peek();
+    back();
     
     display();
 
