@@ -31,15 +31,42 @@ struct Node* insertAtbeginning(int a)
 	return nnode;
 }
 
+struct Node* insertAtend(int a)
+{
+    if(head==NULL)
+		{
+			insertAtbeginning(a);
+		}	
+		else
+		{
+			struct Node* nnode=createNode(a);
+		  struct Node* temp=head;
+		  while(temp->next!=NULL)
+			{	
+				temp=temp->next;
+			}
+			temp->next=nnode;
+			nnode->next=NULL;
+			printf("inserted at end %d\n",nnode->value);
+		}
+}
+
 void displayList()
 {
 	struct Node* temp=head;
-	while(temp!=NULL)
+	if(head==NULL)
 	{
-		printf("%d ",temp->value);
-		temp=temp->next;
+		printf("List is empty!!");
+	}	
+	else
+	{
+		while(temp->next!=NULL)
+		{
+			printf("%d ",temp->value);
+			temp=temp->next;
+		}
+		printf("NUll\n");
 	}
-	printf("NUll\n");
 }
 
 void main()
@@ -48,6 +75,10 @@ void main()
 	insertAtbeginning(20);		
 	insertAtbeginning(30);		
 	insertAtbeginning(40);		
+	displayList();
+	insertAtend(5);
+	insertAtend(4);
+	insertAtend(3);
 	displayList();
 }
 		
