@@ -51,6 +51,35 @@ struct Node* insertAtend(int a)
 		}
 }
 
+void delete(int a)
+{
+		struct Node* temp=head;
+		if(head==NULL)
+		{
+			printf("List is empty!!");
+		}
+		else
+		{
+			if(temp->value==a)
+			{
+				printf("Deleted %d",temp->value);
+				head=head->next;
+				free(temp);
+			}
+			else
+			{
+				while(temp->next->value!=a && temp->next!= NULL)			// "temp->next!= NULL" this part is only for the last node
+				{
+					temp=temp->next;
+				}
+				if(temp->next->value==a)
+				{
+					
+				}
+			}	
+		}		
+}
+
 void displayList()
 {
 	struct Node* temp=head;
