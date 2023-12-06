@@ -1,115 +1,146 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-struct Node
-{
-	int value;
-	struct Node* next;
+struct Node {
+    int data;
+    struct Node* next;
 };
 
-struct Node* head=NULL;
+struct Node* head = NULL;
 
-struct Node* createNode(int a)
-{
-	struct Node* newnode=(struct Node*)malloc(sizeof(struct Node));
-	if(newnode==NULL)
-	{
-		printf("\nMemory not allocated");
-		exit(1);
-	}
-	newnode->value=a;
-	newnode->next=NULL;
-	return newnode;
+struct Node* createNode(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    return newNode;
 }
 
-struct Node* insertAtbeginning(int a)
-{
-	struct Node* nnode=createNode(a);
-	nnode->next=head;
-	head=nnode;
-	printf("inserted %d\n",nnode->value);
-	return nnode;
+void insertAtEnd(int value) {
+    struct Node* newNode = createNode(value);
+
+    if (head == NULL) {
+        head = newNode;
+        return;
+    }
+
+    struct Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    temp->next = newNode;
 }
 
-struct Node* insertAtend(int a)
-{
-    if(head==NULL)
-		{
-			insertAtbeginning(a);
-		}	
-		else
-		{
-			struct Node* nnode=createNode(a);
-		  struct Node* temp=head;
-		  while(temp->next!=NULL)
-			{	
-				temp=temp->next;
-			}
-			temp->next=nnode;
-			nnode->next=NULL;
-			printf("inserted at end %d\n",nnode->value);
-		}
+void insertAtBeginning(int value) {
+    struct Node* newNode = createNode(value);
+    newNode->next = head;
+    head = newNode;
 }
 
-void delete(int a)
-{
-		struct Node* temp=head;
-		if(head==NULL)
-		{
-			printf("List is empty!!");
-		}
-		else
-		{
-			if(temp->value==a)
-			{
-				printf("Deleted %d",temp->value);
-				head=head->next;
-				free(temp);
-			}
-			else
-			{
-				while(temp->next->value!=a && temp->next!= NULL)			// "temp->next!= NULL" this part is only for the last node
-				{
-					temp=temp->next;
-				}
-				if(temp->next->value==a)
-				{
-					
-				}
-			}	
-		}		
+void deleteAtBeginning() {
+    if (head == NULL) {
+        printf("Linked list is empty. Cannot delete from an empty list.\n");
+        return;
+    }
+
+    struct Node* temp = head;
+    head = temp->next;
+    free(temp);
 }
 
-void displayList()
-{
-	struct Node* temp=head;
-	if(head==NULL)
-	{
-		printf("List is empty!!");
-	}	
-	else
-	{
-		while(temp->next!=NULL)
-		{
-			printf("%d ",temp->value);
-			temp=temp->next;
-		}
-		printf("NUll\n");
-	}
+void deleteAtEnd() {
+    if (head == NULL) {
+        printf("Linked list is empty. Cannot delete from an empty list.\n");
+        return;
+    }
+
+    struct Node* temp = head;
+    struct Node* prev = NULL;
+
+    while (temp->next != NULL) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (prev == NULL) {      // If there's only one node in the list
+        
+        head = NULL;
+    } else {
+        prev->next = NULL;
+    }
+
+    free(temp);
 }
 
-void main()
-{
-	insertAtbeginning(10);
-	insertAtbeginning(20);		
-	insertAtbeginning(30);		
-	insertAtbeginning(40);		
-	displayList();
-	insertAtend(5);
-	insertAtend(4);
-	insertAtend(3);
-	displayList();
+void deleteNode(int value) {
+    struct Node* temp = head;
+    struct Node* prev = NULL;
+
+    if (temp != NULL && temp->data == value) {
+        head = temp->next;
+        free(temp);
+        return;
+    }
+
+    while (temp != NULL && temp->data != value) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {
+        printf("Node with value %d not found.\n", value);
+        return;
+    }
+
+    prev->next = temp->next;
+    free(temp);
 }
-		
-	
-			
+
+void printList() {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+void freeList() {
+    struct Node* temp = head;
+    struct Node* next;
+
+    while (temp != NULL) {
+        next = temp->next;
+        free(temp);
+        temp = next;
+    }
+
+    head = NULL;
+}
+
+int main() {
+    
+    insertAtEnd(1);
+    insertAtEnd(2);
+    insertAtEnd(3);
+
+    insertAtBeginning(0);
+
+    printf("Linked List: ");
+    printList();
+
+    deleteNode(2);
+
+    printf("Linked List after deletion: ");
+    printList();
+
+    deleteAtBeginning();
+    deleteAtEnd();
+
+    printf("Linked List after deleteAtBeginning and deleteAtEnd: ");
+    printList();
+
+    freeList();
+
+    return 0;
+}
