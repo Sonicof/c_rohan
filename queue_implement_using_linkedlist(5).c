@@ -81,7 +81,10 @@ void main()
     
     display();
     
-    
+    dequeue();
+    dequeue();
+    dequeue();
+    dequeue();
     
     
     
