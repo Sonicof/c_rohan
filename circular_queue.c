@@ -7,16 +7,25 @@ int queue[max];
 int front=-1;  
 int rear=-1;  
 
+int isEmpty()
+{
+    return (front==-1 && rear==-1);
+}
+
+int isFull()
+{
+    return ((rear+1)%max==front);
+}
 // function to insert an element in a circular queue  
 void enqueue(int element)  
 {  
-    if(front==-1 && rear==-1)   // condition to check queue is empty  
+    if(isEmpty())   // condition to check queue is empty  
     {  
         front=0;  
         rear=0;  
         queue[rear]=element;  
     }  
-    else if((rear+1)%max==front)  // condition to check queue is full  
+    else if(isFull())  // condition to check queue is full  
     {  
         printf("\nQueue is overflow..cannot queue %d",element);  
     }  
@@ -30,7 +39,7 @@ void enqueue(int element)
 // function to delete the element from the queue  
 int dequeue()  
 {  
-    if((front==-1) && (rear==-1))  // condition to check queue is empty  
+    if(isEmpty())  // condition to check queue is empty  
     {  
         printf("\nQueue is underflow..");  
     }  
@@ -51,7 +60,7 @@ int dequeue()
 void display()  
 {  
     int i = front;  
-    if (front == -1 && rear == -1)  
+    if (isEmpty())  
     {  
         printf("\nQueue is empty..");  
     }  
@@ -66,11 +75,8 @@ void display()
     }  
 }
 
-void enqueue(int element);
-int dequeue();
-void display();
-
-int main() {
+int main() 
+{
     enqueue(10);
     enqueue(20);
     enqueue(30);
