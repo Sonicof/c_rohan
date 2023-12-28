@@ -21,7 +21,6 @@ void display(struct system s1[5])
 void main()
 {
 	struct system sys[5];
-	struct system *ptr=sys;
 	for(int i=0;i<5;i++)
 	{
 		printf("Enter Details of Student %d --->",(i+1));
