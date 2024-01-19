@@ -50,26 +50,28 @@ void deleteAtBeginning() {
 
 void deleteAtEnd() {
     if (head == NULL) {
-        printf("Linked list is empty. Cannot delete from an empty list.\n");
+        printf("The list is empty. Cannot delete from an empty list.\n");
         return;
     }
 
+    // If the list has only one node
+    if (head->next == NULL) {
+        free(head);
+        head = NULL;
+        return;
+    }
+
+    // Traverse the list to find the last and second-to-last nodes
     struct Node* temp = head;
     struct Node* prev = NULL;
-
     while (temp->next != NULL) {
         prev = temp;
         temp = temp->next;
     }
 
-    if (prev == NULL) {      // If there's only one node in the list
-        
-        head = NULL;
-    } else {
-        prev->next = NULL;
-    }
-
+    // Delete the last node
     free(temp);
+    prev->next = NULL;
 }
 
 void deleteNode(int value) {
