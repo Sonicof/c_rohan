@@ -1,11 +1,12 @@
 #include<stdio.h>
 int main()
 {
-    int m,n,count=0,a[15][15],i,j;
+    int m,n,count=0,i,j;
     printf("enter the number of rows:\n");
     scanf("%d",&m);
     printf("enter the number of cols:\n");
     scanf("%d",&n);
+    int a[m][n];
     printf("the matrix values is:\n");
     for(i=0;i<m;i++)
     {
@@ -15,7 +16,6 @@ int main()
         }
     }
     printf("the matrix elements are:\n");
-     printf("the matrix is:\n");
     for(i=0;i<m;i++)
     {
         for(j=0;j<n;j++)
@@ -30,7 +30,7 @@ int main()
     {
         for(j=0;j<n;j++)
         {
-            if(a[m][n]==0)
+            if(a[i][j]==0)
             count=count+1;
         }
     }
