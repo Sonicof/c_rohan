@@ -1,13 +1,13 @@
 int palin(char *s,char *s1,int n)
 {
     char str1[n];
-    char str2[n]
-    int ss1=s1,n1=0;
+    char str2[n];
+    char *ss1=s1,n1=0;
     for(int i=0;i<=n;i++){
         str1[i]=*ss1;
         ss1--;
     }
-    for(i=0;i<=n;i++)
+    for(int i=0;i<=n;i++)
     {
         str2[i]=s[i];
     }
